@@ -1,13 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayelasef <ayelasef@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/30 12:07:24 by ayelasef          #+#    #+#             */
+/*   Updated: 2024/07/01 17:40:15 by ayelasef         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
-char *lowercase(char *str)
+char	*lowercase(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] >= 'A' && str[i] <= 'Z')
+	while (str[i])
 	{
-		str[i] += 32;
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			str[i] += 32;
+		}
 		i++;
 	}
 	return (str);
@@ -15,36 +30,27 @@ char *lowercase(char *str)
 
 char	*ft_strcapitalize(char *str)
 {
-	lowercase(str);
 	int	i;
 	int	next;
 
+	lowercase(str);
 	next = 1;
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
-		if(str[i] >= 'a' && str[i] <= 'z')
+		if (str[i] >= 'a' && str[i] <= 'z')
 		{
-			if(next)
+			if (next)
 			{
 				str[i] -= 32;
 				next = 0;
 			}
 		}
-		else if(str[i] >= '0' && str[i] <= '9')
-		{
+		else if (str[i] >= '0' && str[i] <= '9')
 			next = 0;
-		}
 		else
-		{
 			next = 1;
-		}
 		i++;
 	}
 	return (str);
-} 
-int main()
-{
-	char str[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
-	printf("%s\n", ft_strcapitalize(str));
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayelasef <ayelasef@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/30 13:19:31 by ayelasef          #+#    #+#             */
+/*   Updated: 2024/07/02 11:45:11 by ayelasef         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_putchar(char c)
@@ -7,19 +19,21 @@ void	ft_putchar(char c)
 
 void	ft_putstr_non_printable(char *str)
 {
-	char	hex[16];
-	int		i;
-	char	a;
-	char	b;
+	char			*hex;
+	int				i;
+	char			a;
+	char			b;
+	unsigned char	c;
 
-	hex = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c'.'d',
-		'e', 'f'} i = 0;
+	hex = "0123456789abcdef";
+	i = 0;
 	while (str[i])
 	{
-		if ((str[i] >= 0 && str[i] <= 31) || str[i] == 127)
+		c = str[i];
+		if (!(c >= 32 && c <= 126))
 		{
-			a = hex[str[i] / 16];
-			b = hex[(str[i] % 16)];
+			a = hex[c / 16];
+			b = hex[c % 16];
 			ft_putchar('\\');
 			ft_putchar(a);
 			ft_putchar(b);
