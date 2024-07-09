@@ -6,9 +6,11 @@
 /*   By: ayelasef <ayelasef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 08:47:30 by ayelasef          #+#    #+#             */
-/*   Updated: 2024/06/28 10:58:53 by ayelasef         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:27:02 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 void	ft_rev_int_tab(int *tab, int size)
 {
@@ -29,4 +31,17 @@ void	ft_rev_int_tab(int *tab, int size)
 		}
 		i++;
 	}
+}
+
+int main()
+{
+  int size = 5;
+  int tab[] = {6, 5, 4, 2 ,1};
+  ft_rev_int_tab(tab, size);
+  int i;
+  for(i = 0; i < size;i++)
+  {
+    printf("%d", tab[i]);
+  }
+  printf("\n");
 }
